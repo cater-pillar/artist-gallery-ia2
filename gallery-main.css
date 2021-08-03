@@ -1,0 +1,134 @@
+.container-galleries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.container-galleries a {
+    text-decoration: none;
+    color: black;
+}
+.container-galleries-project {
+    height: 250px;
+    width: 250px;
+    margin: 25px;
+    padding: 25px;
+}
+.project-image {
+    width: 200px;
+}
+.project-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+.container-slide {
+    display: none;
+    position: relative;
+    width: 95%;
+    height: 95vh;
+    margin: 2.5vh auto 0px auto;
+    text-align: center;
+}
+.flex {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    flex-direction: column;
+}
+.gallery-flex {
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+}
+.gallery-image {
+    max-height: 100%;
+    max-width: 100%;
+}
+.exit {
+    position: absolute;
+    top: 7px;
+    right: 1%;
+    height: 20px;
+}
+.prev {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    height: 20px;
+}
+.next {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    height: 20px;
+}
+.exit path,
+.prev path,
+.next path {
+    fill: #fc0011;
+}
+.mySlide {
+    margin-top: 10px;
+    max-height: 90%;
+    max-width: 90%;
+    flex-shrink: 20;
+}
+.slideText {
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .slideText {
+        padding-top: 4px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .container-galleries-project {
+        margin: 1px auto 5px auto;
+        width: 100%;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .project-image {
+        padding-top: 20px;
+        width: 200px;
+    }
+    .container-slide {
+        width: 98%;
+        height: 95vh;
+        margin: 0 auto;
+    }
+    .mySlide {
+        max-width: 95%;
+        height: auto;
+    }
+    .exit {
+        height: 18px;
+    } 
+    .prev, .next {
+        height: 18px;
+    }
+    .exit {
+        top: 6px;
+        right: 6px;
+    }
+    .prev {
+        top: 95%;
+        left: 6px;
+    } 
+    .next {
+        top: 95%;
+        right: 6px;
+    }
+}
+@media screen and (min-width: 1200px) {}
