@@ -2,16 +2,21 @@
 <?php
 require 'require_php/conn.php';
 
-$page_title_query = "SELECT title_sr FROM `project` WHERE `project_id` = ". $_GET['id'];
-$page_title_array = $mysqli -> query($page_title_query) -> fetch_all();
+$page_title_query = "SELECT title FROM `project` WHERE `project_id` = ". $_GET['id'];
+$page_title_array = $conn -> prepare($page_title_query);
+$page_title_array->execute();
+$page_titles = $page_title_array->fetchAll();
+
 
 $query_project = "SELECT * FROM `project_slide` WHERE `fk_project_id` = ". $_GET['id'];
-$result_project = $mysqli -> query($query_project) -> fetch_all();
+$result_project = $conn -> prepare($query_project);
+$result_project->execute();
+$projects = $result_project->fetchAll();
 
-$page_title = "IA2 ".$page_title_array[0][0];
+$page_title = "IA2 ".$page_titles[0][0];
 $css = "gallery-main.css";
-$srb_link = "test_slideSR.php?id=".$_GET['id'];
-$eng_link = "test_slide.php?id=".$_GET['id'];
+$srb_link = "slideSR.php?id=".$_GET['id'];
+$eng_link = "slide.php?id=".$_GET['id'];
 
 
 $inc = 0;
@@ -22,9 +27,9 @@ require 'require_php/header.php' ?>
     <div class='slide-down'>
         <div class="container">
             <div class="container-galleries">
-                <?php foreach ($result_project as $result): ?>
+                <?php foreach ($projects as $project): ?>
                     <div class="gallery-flex container-galleries-project bg bghover" id=<?php echo $inc++ ?>>
-                            <img src="<?php echo $result[2] ?>" class="gallery-image">
+                            <img src="<?php echo $project[2] ?>" class="gallery-image">
                     </div>
                 <?php endforeach ?>
             </div>

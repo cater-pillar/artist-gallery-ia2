@@ -1,9 +1,15 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'ia2');
 
-if($mysqli -> connect_errno) {
-    echo 'Failed to connect to MySQL' . $mysqli -> connect_error;
+$servername = "localhost";
+$username = "root";
+$password = "steva";
+$dbname = "ia2";
+
+try {
+    $conn = new PDO("mysql:host=$servername;charset=utf8;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 };
 
-$mysqli -> set_charset("utf8mb4");
-?>
+
